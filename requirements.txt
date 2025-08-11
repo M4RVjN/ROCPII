@@ -1,0 +1,16 @@
+# Document handling
+python-docx==1.2.0
+openpyxl==3.1.5
+PyMuPDF==1.26.3
+XlsxWriter==3.2.5
+
+# Machine Learning
+transformers==4.55.0
+torch==2.8.0
+
+# File type detection
+python-magic-bin==0.4.14
+
+# Data manipulation and progress bar
+pandas==2.3.1
+tqdm==4.67.1
