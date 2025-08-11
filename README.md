@@ -135,6 +135,7 @@ python -m src.main ./sensitive_data -o scan_report.xlsx
 |--workers	|-w	|平行處理的進程數（預設為 CPU 核心數）|
 |--force	|-f	|覆寫已存在的輸出檔案|
 |--version	|-v	|顯示版本號|
+|--help	|-h	|顯示工具使用說明|
 
 ## **6. 擴充掃描器**
 ROCPII Tool 採用插件化架構，新增個資掃描項目流程如下：
