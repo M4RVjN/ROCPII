@@ -122,7 +122,7 @@ python -m src.main <要掃描的目錄或檔案路徑> [其他選項]
 **範例**
 
 ```bash
-python -m src.main ./sensitive_data -o scan_report.xlsx
+python -m src.main ./sensitive_data -o scan_report.xlsx --force
 ```
 **命令列參數**
 
