@@ -73,7 +73,7 @@ ROCPII Tool 是一個可擴展的白箱網頁個資掃描引擎，採用「混�
 1. **建立並啟用虛擬環境**（強烈建議）
     ```bash
     # 建立虛擬環境
-    python -m venv venv
+    python -m venv .venv
 
     # 啟用虛擬環境 (Windows)
     .\venv\Scripts\activate
@@ -84,26 +84,22 @@ ROCPII Tool 是一個可擴展的白箱網頁個資掃描引擎，採用「混�
 
 2. **建立 requirements.txt**
     ```txt
-    # 核心功能
-    pandas
-    XlsxWriter
-    tqdm
-    PyYAML
-
-    # NLP 引擎
-    transformers
-    torch
-
-    # 檔案解析器
-    python-docx
-    PyMuPDF
-    openpyxl
-    xlrd
-    beautifulsoup4
-    lxml
-    python-magic
-    pywin32; platform_system == "Windows"
-    python-magic-bin; platform_system == "Windows"
+    # Document handling
+    python-docx==1.2.0
+    openpyxl==3.1.5
+    PyMuPDF==1.26.3
+    XlsxWriter==3.2.5
+    
+    # Machine Learning
+    transformers==4.55.0
+    torch==2.8.0
+    
+    # File type detection
+    python-magic-bin==0.4.14
+    
+    # Data manipulation and progress bar
+    pandas==2.3.1
+    tqdm==4.67.1
     ```
 
 3. **安裝依賴套件**
@@ -143,17 +139,15 @@ python -m src.main ./sensitive_data -o scan_report.xlsx
 ## **6. 擴充掃描器**
 ROCPII Tool 採用插件化架構，新增個資掃描項目流程如下：
 
-分析需求：確定個資格式與是否需要驗證演算法。
+**分析需求**：確定個資格式與是否需要驗證演算法。
 
-實作驗證器（可選）：在 src/validators.py 新增驗證函式。
+**實作驗證器（可選）**：在 src/validators.py 新增驗證函式。
 
-建立插件檔案：於 src/plugins/ 新增 xxx_scanner.py。
+**建立插件檔案**：於 src/plugins/ 新增 xxx_scanner.py。
 
-撰寫插件類別：
+**撰寫插件類別**：
 
-python
-複製
-編輯
+```python
 from src.plugins.base import ScannerPlugin
 
 class MyScanner(ScannerPlugin):
@@ -162,13 +156,14 @@ class MyScanner(ScannerPlugin):
     def scan(self, text: str, file_context: FileContext) -> ScanReport:
         # 核心掃描邏輯
         pass
+```
 完成：PluginManager 會在下次啟動時自動載入新插件。
 
 ## **7. 已知限制**
 首次執行：會自動下載 NLP 模型（約 400MB），需數分鐘。
 
-NLP 準確率：對特殊格式地址辨識率可能不足。
+**NLP 與 Regex 準確率**：對特殊格式地址辨識率可能不足。
 
-加密檔案：無法解析受密碼保護的 Office 或 PDF 檔案。
+**加密檔案**：無法解析受密碼保護的 Office 或 PDF 檔案。
 
-正確性：結果僅供過濾與參考，不保證 100% 準確。
+**正確性**：此工具產出的結果僅供參考，不保證 100% 準確，請以實際網頁中的內容為準。
