@@ -160,7 +160,7 @@ class MyScanner(ScannerPlugin):
 完成：PluginManager 會在下次啟動時自動載入新插件。
 
 ## **7. 已知限制**
-首次執行：會自動下載 NLP 模型（約 400MB），需數分鐘。
+**首次執行**：會自動下載 NLP 模型（約 400MB），需數分鐘。
 
 **NLP 與 Regex 準確率**：對特殊格式地址辨識率可能不足。
 
