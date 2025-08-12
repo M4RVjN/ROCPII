@@ -168,3 +168,6 @@ class MyScanner(ScannerPlugin):
 **加密檔案**：無法解析受密碼保護的 Office 或 PDF 檔案。
 
 **正確性**：此工具產出的結果僅供參考，不保證 100% 準確，請以實際網頁中的內容為準。
+
+## **8. 設計架構**
+![設計架構圖](./assets/design.jpeg)
